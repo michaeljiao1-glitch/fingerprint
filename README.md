@@ -13,7 +13,7 @@ storage; this app keeps the patient details and visit times.
 - Windows with .NET Framework 4.8
 - Visual Studio 2019 or later (open `SampleApplication.csproj`)
 - Bayometric BFS installed and running, with a reader connected. The app talks
-  to it at `http://localhost:22966/Bayometric/BFSAPI/soap` (see `App.config`).
+  to it at `http://localhost:22963/Bayometric/BFSAPI/soap` (see `App.config`).
 
 ## How it works
 
