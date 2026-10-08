@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://www.bayometric.com" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="UranusCore" targetNamespace="http://www.bayometric.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.bayometric.com/Imports">
+      <xsd:import schemaLocation="http://localhost:22963/Bayometric/BFSAPI/soap/mex?xsd=xsd0" namespace="http://www.bayometric.com" />
+      <xsd:import schemaLocation="http://localhost:22963/Bayometric/BFSAPI/soap/mex?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:22963/Bayometric/BFSAPI/soap/mex?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="UranusCore_CreateSession_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateSession" />
+  </wsdl:message>
+  <wsdl:message name="UranusCore_CreateSession_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="UranusCore_EndSession_InputMessage">
+    <wsdl:part name="parameters" element="tns:EndSession" />
+  </wsdl:message>
+  <wsdl:message name="UranusCore_EndSession_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EndSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="UranusCore_RegisterPerson_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterPerson" />
+  </wsdl:message>
+  <wsdl:message name="UranusCore_RegisterPerson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterPersonResponse" />
+  </wsdl:message>
+  <wsdl:message name="UranusCore_UnregisterPerson_InputMessage">
+    <wsdl:part name="parameters" element="tns:UnregisterPerson" />
+  </wsdl:message>
+  <wsdl:message name="UranusCore_UnregisterPerson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UnregisterPersonResponse" />
+  </wsdl:message>
+  <wsdl:message name="UranusCore_Search_InputMessage">
+    <wsdl:part name="parameters" element="tns:Search" />
+  </wsdl:message>
+  <wsdl:message name="UranusCore_Search_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="UranusCore_SearchEx_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchEx" />
+  </wsdl:message>
+  <wsdl:message name="UranusCore_SearchEx_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchExResponse" />
+  </wsdl:message>
+  <wsdl:message name="UranusCore_CancelSearch_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelSearch" />
+  </wsdl:message>
+  <wsdl:message name="UranusCore_CancelSearch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="UranusCore_GetRegisteredPersons_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRegisteredPersons" />
+  </wsdl:message>
+  <wsdl:message name="UranusCore_GetRegisteredPersons_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRegisteredPersonsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="UranusCore">
+    <wsdl:operation name="CreateSession">
+      <wsdl:input wsaw:Action="http://www.bayometric.com/UranusCore/CreateSession" message="tns:UranusCore_CreateSession_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.bayometric.com/UranusCore/CreateSessionResponse" message="tns:UranusCore_CreateSession_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EndSession">
+      <wsdl:input wsaw:Action="http://www.bayometric.com/UranusCore/EndSession" message="tns:UranusCore_EndSession_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.bayometric.com/UranusCore/EndSessionResponse" message="tns:UranusCore_EndSession_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterPerson">
+      <wsdl:input wsaw:Action="http://www.bayometric.com/UranusCore/RegisterPerson" message="tns:UranusCore_RegisterPerson_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.bayometric.com/UranusCore/RegisterPersonResponse" message="tns:UranusCore_RegisterPerson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UnregisterPerson">
+      <wsdl:input wsaw:Action="http://www.bayometric.com/UranusCore/UnregisterPerson" message="tns:UranusCore_UnregisterPerson_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.bayometric.com/UranusCore/UnregisterPersonResponse" message="tns:UranusCore_UnregisterPerson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Search">
+      <wsdl:input wsaw:Action="http://www.bayometric.com/UranusCore/Search" message="tns:UranusCore_Search_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.bayometric.com/UranusCore/SearchResponse" message="tns:UranusCore_Search_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchEx">
+      <wsdl:input wsaw:Action="http://www.bayometric.com/UranusCore/SearchEx" message="tns:UranusCore_SearchEx_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.bayometric.com/UranusCore/SearchExResponse" message="tns:UranusCore_SearchEx_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelSearch">
+      <wsdl:input wsaw:Action="http://www.bayometric.com/UranusCore/CancelSearch" message="tns:UranusCore_CancelSearch_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.bayometric.com/UranusCore/CancelSearchResponse" message="tns:UranusCore_CancelSearch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRegisteredPersons">
+      <wsdl:input wsaw:Action="http://www.bayometric.com/UranusCore/GetRegisteredPersons" message="tns:UranusCore_GetRegisteredPersons_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.bayometric.com/UranusCore/GetRegisteredPersonsResponse" message="tns:UranusCore_GetRegisteredPersons_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UranusCoreEndpoint" type="tns:UranusCore">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateSession">
+      <soap:operation soapAction="http://www.bayometric.com/UranusCore/CreateSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EndSession">
+      <soap:operation soapAction="http://www.bayometric.com/UranusCore/EndSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterPerson">
+      <soap:operation soapAction="http://www.bayometric.com/UranusCore/RegisterPerson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnregisterPerson">
+      <soap:operation soapAction="http://www.bayometric.com/UranusCore/UnregisterPerson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Search">
+      <soap:operation soapAction="http://www.bayometric.com/UranusCore/Search" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchEx">
+      <soap:operation soapAction="http://www.bayometric.com/UranusCore/SearchEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelSearch">
+      <soap:operation soapAction="http://www.bayometric.com/UranusCore/CancelSearch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRegisteredPersons">
+      <soap:operation soapAction="http://www.bayometric.com/UranusCore/GetRegisteredPersons" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UranusCore">
+    <wsdl:port name="UranusCoreEndpoint" binding="tns:UranusCoreEndpoint">
+      <soap:address location="http://localhost:22963/Bayometric/BFSAPI/soap" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

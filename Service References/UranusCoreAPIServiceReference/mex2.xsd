@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.bayometric.com" elementFormDefault="qualified" targetNamespace="http://www.bayometric.com" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:22963/Bayometric/BFSAPI/soap/mex?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://localhost:22963/Bayometric/BFSAPI/soap/mex?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="CreateSession">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="authRequestInfo" nillable="true" type="tns:AuthRequestInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="AuthRequestInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PersonID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ShowGUI" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Timeout" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AuthRequestInfo" nillable="true" type="tns:AuthRequestInfo" />
+  <xs:element name="CreateSessionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreateSessionResult" nillable="true" type="tns:BFSAuthResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BFSAuthResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BFSResponseBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PersonID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SessionKey" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BFSAuthResponse" nillable="true" type="tns:BFSAuthResponse" />
+  <xs:complexType name="BFSResponseBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResponseCode" type="tns:BFSClientReturnErrorCode" />
+      <xs:element minOccurs="0" name="ReturnMessage" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BFSResponseBase" nillable="true" type="tns:BFSResponseBase" />
+  <xs:simpleType name="BFSClientReturnErrorCode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SUCCESS" />
+      <xs:enumeration value="CANCELED_BY_USER" />
+      <xs:enumeration value="HIT_CONFIRMED" />
+      <xs:enumeration value="NO_HIT" />
+      <xs:enumeration value="ALREADY_ENROLLED" />
+      <xs:enumeration value="CAPTURE_TIMEOUT" />
+      <xs:enumeration value="BAD_IMAGE_QUALITY" />
+      <xs:enumeration value="SERVICE_BUSY" />
+      <xs:enumeration value="INCORRECT_CALL" />
+      <xs:enumeration value="END_OF_LIST" />
+      <xs:enumeration value="NO_READER_CONNECTED">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SERVER_CONNECTION_FAILED">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SERVER_TIMEOUT">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SERVER_ERROR">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PERSON_ID_NOT_FOUND">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-5</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="INVALID_LICENSE">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-6</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LICENSE_MAX_RECORDS">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-7</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LICENSE_MAX_CLIENTS">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-8</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LICENSE_EXPIRED">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-9</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="INVALID_SESSION">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-10</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SESSION_EXPIRED">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-11</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="NOT_ALLOWED_OPERATION">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-12</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="INVALID_CREDENTIALS">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-13</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="INVALID_PARAMETERS">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-14</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="REQUIRES_AUTHENTICATION">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-15</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="USER_NOT_ACTIVE">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-16</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="BFSClientReturnErrorCode" nillable="true" type="tns:BFSClientReturnErrorCode" />
+  <xs:element name="EndSession">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionKey" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EndSessionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EndSessionResult" nillable="true" type="tns:BFSResponseBase" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegisterPerson">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="personID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegisterPersonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RegisterPersonResult" nillable="true" type="tns:BFSResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BFSResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BFSResponseBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PersonFoundID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PersonID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BFSResponse" nillable="true" type="tns:BFSResponse" />
+  <xs:element name="UnregisterPerson">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="personID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnregisterPersonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UnregisterPersonResult" nillable="true" type="tns:BFSResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Search">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SearchResult" nillable="true" type="tns:BFSResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchEx">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="appToken" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="personID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="showGUI" type="xs:boolean" />
+        <xs:element minOccurs="0" name="timeout" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchExResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SearchExResult" nillable="true" type="tns:BFSResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelSearch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="appToken" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelSearchResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CancelSearchResult" nillable="true" type="tns:BFSResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRegisteredPersons">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="startIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="numberOfPersons" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRegisteredPersonsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetRegisteredPersonsResult" nillable="true" type="tns:BFSInfoResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BFSInfoResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BFSResponseBase">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="RegisteredPersons" nillable="true" type="q1:ArrayOfstring" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BFSInfoResponse" nillable="true" type="tns:BFSInfoResponse" />
+</xs:schema>
