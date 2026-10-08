@@ -1,0 +1,44 @@
+<Window x:Class="SampleApplication.PatientDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Patient" SizeToContent="Height" Width="420" ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner" ShowInTaskbar="False">
+    <Grid Margin="14">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Content="First name *"/>
+        <TextBox Grid.Row="0" Grid.Column="1" x:Name="tbFirstName" Margin="0,3"/>
+
+        <Label Grid.Row="1" Content="Last name *"/>
+        <TextBox Grid.Row="1" Grid.Column="1" x:Name="tbLastName" Margin="0,3"/>
+
+        <Label Grid.Row="2" Content="Date of birth"/>
+        <DatePicker Grid.Row="2" Grid.Column="1" x:Name="dpDateOfBirth" Margin="0,3"/>
+
+        <Label Grid.Row="3" Content="Phone"/>
+        <TextBox Grid.Row="3" Grid.Column="1" x:Name="tbPhone" Margin="0,3"/>
+
+        <Label Grid.Row="4" Content="Cybermed patient ID"/>
+        <TextBox Grid.Row="4" Grid.Column="1" x:Name="tbCybermedId" Margin="0,3"/>
+
+        <TextBlock Grid.Row="5" Grid.ColumnSpan="2" x:Name="tbHint" Margin="0,8,0,0" TextWrapping="Wrap" Foreground="#555555"
+                   Text="After you press OK, the fingerprint service will ask for an operator login (first time only) and then for the patient's finger."/>
+
+        <StackPanel Grid.Row="6" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,12,0,0">
+            <Button Content="OK" IsDefault="True" Click="btOk_Click"/>
+            <Button Content="Cancel" IsCancel="True" Margin="6,0,0,0"/>
+        </StackPanel>
+    </Grid>
+</Window>

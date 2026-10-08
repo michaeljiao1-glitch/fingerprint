@@ -1,18 +1,53 @@
-﻿<Window x:Class="SampleApplication.MainWindow"
+<Window x:Class="SampleApplication.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="598">
-    <Grid>
-        <Label Content="Biometric ID:" HorizontalAlignment="Left" Margin="5,20,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <TextBox x:Name="tbGuid" HorizontalAlignment="Left" Height="23" Margin="122,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="322"/>
-        <Button x:Name="btRegisterPerson" Content="Register Person" HorizontalAlignment="Left" Margin="461,72,0,0" VerticalAlignment="Top" Width="108" Click="btRegisterPerson_Click"/>
-        <Button x:Name="btUnregisterPerson" Content="Unregister Person" HorizontalAlignment="Left" Margin="461,97,0,0" VerticalAlignment="Top" Width="108" Click="btUnregisterPerson_Click"/>
-        <Button x:Name="btSearch" Content="Search" HorizontalAlignment="Left" Margin="461,133,0,0" VerticalAlignment="Top" Width="108" Click="btSearch_Click"/>
-        <Button x:Name="btCancelSearch" Content="Cancel  Search" HorizontalAlignment="Left" Margin="461,158,0,0" VerticalAlignment="Top" Width="108" Click="btCancelSearch_Click"/>
-        <Button x:Name="btCreateSession" Content="Create Session" HorizontalAlignment="Left" Margin="461,17,0,0" VerticalAlignment="Top" Width="108" Click="btCreateSession_Click"/>
-        <Button x:Name="btEndSession" Content="End Session" HorizontalAlignment="Left" Margin="461,42,0,0" VerticalAlignment="Top" Width="108" Click="btEndSession_Click"/>
-        <Button x:Name="btListUsers" Content="List Users" HorizontalAlignment="Left" Margin="10,163,0,0" VerticalAlignment="Top" Width="108" Click="btListUsers_Click"/>
-        <ListBox x:Name="lbUsers" HorizontalAlignment="Left" Height="146" Margin="135,163,0,0" VerticalAlignment="Top" Width="178"/>
+        Title="Patient Check-In" Height="620" Width="980" MinHeight="420" MinWidth="720"
+        WindowStartupLocation="CenterScreen" Closing="Window_Closing">
+    <DockPanel Margin="12">
+        <Grid DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
 
-    </Grid>
+            <StackPanel Grid.Column="0">
+                <Button x:Name="btScan" Content="Scan Fingerprint" FontSize="22" Padding="28,16" Click="btScan_Click"/>
+                <Button x:Name="btCancelScan" Content="Cancel Scan" Margin="0,6,0,0" IsEnabled="False" Click="btCancelScan_Click"/>
+            </StackPanel>
+
+            <Border x:Name="bdStatus" Grid.Column="1" Margin="16,0" Padding="14,10"
+                    BorderBrush="#CCCCCC" BorderThickness="1" CornerRadius="4" Background="#F5F5F5">
+                <StackPanel>
+                    <TextBlock x:Name="tbStatusTitle" FontSize="26" FontWeight="SemiBold" Text="Ready"/>
+                    <TextBlock x:Name="tbStatusDetail" FontSize="15" TextWrapping="Wrap" Margin="0,4,0,0"
+                               Text="Press Scan Fingerprint and ask the patient to place their finger on the reader."/>
+                </StackPanel>
+            </Border>
+
+            <StackPanel Grid.Column="2">
+                <Button x:Name="btPatients" Content="Manage Patients..." Click="btPatients_Click"/>
+            </StackPanel>
+        </Grid>
+
+        <DockPanel DockPanel.Dock="Top" Margin="0,14,0,6" LastChildFill="False">
+            <TextBlock Text="Visits on" VerticalAlignment="Center" FontWeight="SemiBold" Margin="0,0,8,0"/>
+            <DatePicker x:Name="dpDay" Width="140" SelectedDateChanged="dpDay_SelectedDateChanged"/>
+            <TextBlock x:Name="tbSummary" VerticalAlignment="Center" Margin="12,0,0,0" Foreground="#555555"/>
+            <Button DockPanel.Dock="Right" x:Name="btRetrySync" Content="Retry Cybermed Sync" Margin="6,0,0,0" Click="btRetrySync_Click"/>
+            <Button DockPanel.Dock="Right" x:Name="btCheckOut" Content="Check Out Selected" Click="btCheckOut_Click"/>
+        </DockPanel>
+
+        <DataGrid x:Name="dgVisits" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False"
+                  SelectionMode="Single" HeadersVisibility="Column" GridLinesVisibility="Horizontal">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Patient" Binding="{Binding PatientName}" Width="2*"/>
+                <DataGridTextColumn Header="Arrived" Binding="{Binding Arrived}" Width="90"/>
+                <DataGridTextColumn Header="Left" Binding="{Binding Left}" Width="90"/>
+                <DataGridTextColumn Header="Duration" Binding="{Binding Duration}" Width="90"/>
+                <DataGridTextColumn Header="Cybermed Visit" Binding="{Binding CybermedVisitId}" Width="*"/>
+                <DataGridTextColumn Header="Cybermed Status" Binding="{Binding CybermedStatus}" Width="2*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
 </Window>
